@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Walking Dead to The Walking God | E-Book</title>
+    <!-- Google Fonts for Esoteric & Whimsical Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Lemon Squeezy Checkout Script -->
+    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+    <style>
+        :root {
+            --bg-deep: #0a0612;
+            --bg-card: rgba(22, 14, 35, 0.7);
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa820a;
+            --parchment: #f4eee1;
+            --accent-purple: #4a1f63;
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --text-main: #e2d9c5;
+            --text-muted: #b0a4be;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Celestial Background Effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(white 1px, transparent 0),
+                radial-gradient(rgba(212,175,55,0.5) 1.5px, transparent 0);
+            background-size: 120px 120px, 200px 200px;
+            background-position: 0 0, 60px 60px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: drift 100s linear infinite;
+        }
+
+        @keyframes drift {
+            from { background-position: 0 0, 60px 60px; }
+            to { background-position: 1000px 1000px, 1060px 1060px; }
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header / Nav */
+        header {
+            text-align: center;
+            padding: 3rem 0 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .mystic-badge {
+            font-family: 'Quicksand', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: inline-block;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(10, 6, 18, 0.6);
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: var(--gold-light);
+            text-shadow: 0 0 20px var(--accent-glow);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Book Cover Presentation */
+        .book-cover-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .book-cover-container::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .book-cover {
+            width: 100%;
+            max-width: 360px;
+            aspect-ratio: 2/3;
+            background: linear-gradient(135deg, #1c102b 0%, #2e194d 50%, #11091f 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover .cover-sigil {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .book-cover h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .book-cover .author {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Hero Content */
+        .hero-content h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .cta-group {
+                justify-content: center;
+            }
+        }
+
+        .btn {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--bg-deep);
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+        }
+
+        /* Esoteric Divider */
+        .divider {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+            opacity: 0.6;
+            letter-spacing: 1em;
+        }
+
+        /* Sections Grid */
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .card h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Alchemical Oracle Widget */
+        .oracle-box {
+            background: radial-gradient(circle, rgba(35,20,58,0.9) 0%, rgba(15,9,26,0.95) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .oracle-box h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .oracle-output {
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--parchment);
+            margin: 1.5rem 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-muted);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Sample Preview */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 3, 10, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #140b21;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            max-width: 650px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 3rem 2.5rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .modal-content h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="mystic-badge">✦ Esoteric Transmission ✦</div>
+            <h1>The Walking Dead to The Walking God</h1>
+            <p class="subtitle">An Initiation into Total Self-Mastery & Divine Awakening</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <!-- Book Cover Showcase -->
+            <div class="book-cover-container">
+                <div class="book-cover">
+                    <div class="cover-sigil">🪞 👁️ ⚡</div>
+                    <div>
+                        <h2>The Walking Dead to The Walking God</h2>
+                        <p class="author">By Desiree Jonae Jenkins</p>
+                    </div>
+                    <div style="font-size: 0.8rem; letter-spacing: 0.1em; color: var(--gold);">✦ Digital Edition ✦</div>
+                </div>
+            </div>
+
+            <!-- Hero Text & Purchase -->
+            <div class="hero-content">
+                <h3>Awaken From Automated Existence</h3>
+                <p>For too long, humanity has sleepwalked through a matrix of mundane repetition—reacting, surviving, and drifting. This grimoire guides you through the alchemical transmutation from the slumber of the walking dead to the sovereign consciousness of a walking god.</p>
+                <p><strong>Format:</strong> Instant Digital Download (PDF & ePub)</p>
+                
+                <div class="cta-group">
+                    <!-- Replace the href below with your actual Lemon Squeezy Checkout URL -->
+                    <a href="https://yourstore.lemonsqueezy.com/checkout/buy/YOUR-PRODUCT-ID" class="btn btn-primary" class="lemonsqueezy-button">
+                        ✦ Acquire Grimoire ($19)
+                    </a>
+                    <button class="btn btn-secondary" onclick="openModal()">
+                        Read Sample
+                    </button>
+                    <!-- Direct downloadable demo button -->
+                    <a href="#download-demo" class="btn btn-secondary" onclick="downloadDemo(event)">
+                        📥 Free Demo PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider">✧ ✧ ✧</div>
+
+        <!-- Alchemical Oracle Widget -->
+        <div class="oracle-box">
+            <h3>The Daily Alchemical Oracle</h3>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Consult the ether before your journey begins.</p>
+            <div class="oracle-output" id="oracleText">"As within, so without. As above, so below. The mirror awaits your gaze."</div>
+            <button class="btn btn-secondary" onclick="drawOracleCard()">Draw a Wisdom Token</button>
+        </div>
+
+        <!-- Features Grid -->
+        <section class="grid-section">
+            <div class="card">
+                <h3>I. Breaking the Shell</h3>
+                <p>Identify the subconscious programs, ancestral loops, and media conditioning that keep your spirit bound in a state of automated survival.</p>
+            </div>
+            <div class="card">
+                <h3>II. Emotional Alchemy</h3>
+                <p>Transform heavy psychological lead—fear, grief, and resentment—into the golden fire of emotional sovereignty and conscious creation.</p>
+            </div>
+            <div class="card">
+                <h3>III. The Sovereign Walk</h3>
+                <p>Step out of the crowd and into your divine authority. Anchor your frequency so completely that your mere presence alters reality.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Desiree Jonae Jenkins. All Rights Reserved. Crafted in the Light of the Cosmos.</p>
+        </footer>
+    </div>
+
+    <!-- Chapter Sample Modal -->
+    <div class="modal-overlay" id="sampleModal" onclick="outsideClick(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3>Excerpt from Chapter I</h3>
+            <p style="color: var(--gold); font-style: italic;">The awakening is rarely thunderous; most often, it is a quiet realization that the script you have been handed was written by someone else.</p>
+            <p>Most souls walk the earth wrapped in the heavy garments of habit. They eat, speak, labor, and sleep according to invisible currents established centuries before their birth. They are the walking dead—not corpses of flesh, but spirits in slumber, reacting to stimuli like clockwork automata.</p>
+            <p>To become a walking god is not an act of arrogance; it is an act of supreme remembrance. It is stepping behind the curtain of your own mind, seizing the levers of perception, and realizing that reality bends to the sovereign will once the illusion of helplessness is shattered.</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://yourstore.lemonsqueezy.com/checkout/buy/YOUR-PRODUCT-ID" class="btn btn-primary lemonsqueezy-button">
+                    Unlock Full Grimoire
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // Oracle Wisdom Bank
+        const maxims = [
+            "\"The universe does not give you what you want; it reflects who you are being.\"",
+            "\"When you master your inner silence, the noise of the world loses its grip.\"",
+            "\"Break the routine, and you break the timeline.\"",
+            "\"That which you resist in shadow will master you in light until acknowledged.\"",
+            "\"You are not a drop in the ocean. You are the entire ocean in a drop.\"",
+            "\"To step into godhood is to drop the armor of victimhood forever.\""
+        ];
+
+        function drawOracleCard() {
+            const output = document.getElementById('oracleText');
+            output.style.opacity = 0;
+            setTimeout(() => {
+                const randomMaxim = maxims[Math.floor(Math.random() * maxims.length)];
+                output.innerText = randomMaxim;
+                output.style.opacity = 1;
+            }, 200);
+        }
+
+        // Modal Controls
+        function openModal() {
+            document.getElementById('sampleModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('sampleModal').classList.remove('active');
+        }
+
+        function outsideClick(e) {
+            if (e.target.id === 'sampleModal') {
+                closeModal();
+            }
+        }
+
+        // Demo Download Simulation
+        function downloadDemo(e) {
+            e.preventDefault();
+            alert("Preparing your free sample grimoire download... (In production, link this to your sample PDF file URL)");
+        }
+    </script>
+</body>
+</html>
